@@ -1,0 +1,12 @@
+.users-items{
+    display: flex;
+    justify-content: space-around;
+    justify-content: flex-start;
+}
+.item{
+    padding: 7px;
+    text-align: left;
+    /* flex-basis: 180px; */
+    width: 180px;
+}
+.bg-gray{ background: #eee;}
