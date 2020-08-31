@@ -1,3 +1,4 @@
+import { User } from './shared/user';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,11 +8,18 @@ export class UsersService {
 
   constructor() { }
 
-  getUsersList() {
+  getUsersList(): User[] {
+    return this.usersList;
+  }
+  findUser(query: string): User[] {
+    return this.usersList.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+  }
+
+  sortUser(direction: string) {
     return this.usersList;
   }
 
-  usersList = [
+  usersList: User [] = [
     {
       "id": 1,
       "name": "Leanne Graham",
