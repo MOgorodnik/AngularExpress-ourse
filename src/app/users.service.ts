@@ -14,13 +14,9 @@ export class UsersService {
   findUser(query: string): User[] {
     return this.usersList.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
   }
-  comparator(a: object, b: object) {
-    if (a.username.toLowerCase() > b.username.toLowerCase()) {
-      return 1;
-    }
-    if (a.username.toLowerCase() < b.username.toLowerCase()) {
-      return -1;
-    }
+  comparator(a, b) {
+    if (a.username.toLowerCase() > b.username.toLowerCase()) { return 1; }
+    if (a.username.toLowerCase() < b.username.toLowerCase()) { return -1; }
     // a должно быть равным b
     return 0;
   }
@@ -37,6 +33,10 @@ export class UsersService {
       console.log("direction === '1'")
       return this.usersList.sort(this.comparator).reverse();
     }
+  }
+
+  addUser(user: User) {
+    this.usersList.unshift(user);
   }
 
   usersList: User[] = [

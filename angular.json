@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "AngularExpress-ourse"
+  "defaultProject": "AngularExpress-ourse",
+  "cli": {
+    "analytics": false
+  }
 }
