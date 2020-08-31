@@ -24,6 +24,7 @@ export class UsersListComponent implements OnInit {
 
   sort(direction: string){
     console.log(direction)
-    this.usersList = this.usersService.sortUser(direction);
+    // this.usersList = this.usersService.sortUser(direction);
+    this.usersList = this.usersService.sortUserWithComp(direction);
   }
 }

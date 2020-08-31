@@ -1,9 +1,9 @@
 <footer class="filter-bar">
     <mat-form-field appearance="outline">
         <mat-label>Сортировка пользователей</mat-label>
-        <mat-select #list {selectionChange} = sort{list.value}>
-            <mat-option value="0"> От А до Я </mat-option>
-            <mat-option value="1"> От Я до А </mat-option>
+        <mat-select #list (selectionChange)="sort(list.value)">
+            <mat-option value="0"> От А до Z </mat-option>
+            <mat-option value="1"> От Z до А </mat-option>
         </mat-select>
     </mat-form-field>
 

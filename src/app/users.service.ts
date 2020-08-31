@@ -14,12 +14,32 @@ export class UsersService {
   findUser(query: string): User[] {
     return this.usersList.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
   }
-
-  sortUser(direction: string) {
-    return this.usersList;
+  comparator(a: object, b: object) {
+    if (a.username.toLowerCase() > b.username.toLowerCase()) {
+      return 1;
+    }
+    if (a.username.toLowerCase() < b.username.toLowerCase()) {
+      return -1;
+    }
+    // a должно быть равным b
+    return 0;
+  }
+  sortUser(val: string) {
+    const askDesk = !!parseInt(val, 10) ? -1 : 1;
+    return this.usersList.sort((a: any, b: any) => askDesk * (a.username > b.username ? 1 : -1));
+  }
+  sortUserWithComp(direction: string) {
+    if (direction === '0') {
+      console.log("direction === '0'")
+      console.log(this.usersList.sort(this.comparator))
+      return this.usersList.sort(this.comparator)
+    } else {
+      console.log("direction === '1'")
+      return this.usersList.sort(this.comparator).reverse();
+    }
   }
 
-  usersList: User [] = [
+  usersList: User[] = [
     {
       "id": 1,
       "name": "Leanne Graham",
