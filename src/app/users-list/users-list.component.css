@@ -14,9 +14,15 @@
 .filter-bar .line{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     border-top: 1px solid #777;
     border-bottom: 1px solid #777;
     padding: 14px 0 0;
 }
 .filter-bar .line > *{margin: 0 3px;}
+.b-line{
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

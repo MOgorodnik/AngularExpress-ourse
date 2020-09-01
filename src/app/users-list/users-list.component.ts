@@ -61,5 +61,7 @@ export class UsersListComponent implements OnInit {
   deleteForService() {
     console.log(12121)
     this.usersService.deleteUsers(this.selectedList)
+
+    this.usersList = this.usersService.getUsersList();
   }
 }
