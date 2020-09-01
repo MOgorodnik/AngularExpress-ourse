@@ -1,67 +1,56 @@
 <footer class="filter-bar">
-  <mat-form-field appearance="outline">
-    <mat-label>Сортировка пользователей</mat-label>
-    <mat-select #list (selectionChange)="sort(list.value)">
-      <mat-option value="0"> От А до Z </mat-option>
-      <mat-option value="1"> От Z до А </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <div class="line">
 
-  <mat-form-field appearance="outline">
-    <mat-label>Поиск</mat-label>
-    <input
-      matInput
-      #input
-      placeholder="имя пользователя"
-      value=""
-      (keyup.enter)="search(input.value)"
-    />
-    <mat-icon matSuffix (click)="search(input.value)">search</mat-icon>
-  </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Сортировка пользователей</mat-label>
+            <mat-select #list (selectionChange)="sort(list.value)">
+                <mat-option value="0"> От А до Z </mat-option>
+                <mat-option value="1"> От Z до А </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Поиск</mat-label>
+            <input matInput #input placeholder="имя пользователя" value="" (keyup.enter)="search(input.value)" />
+            <mat-icon matSuffix (click)="search(input.value)">search</mat-icon>
+        </mat-form-field>
+
+    </div>
+    <div class="line">
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput #input placeholder="Username" [(ngModel)]='username' />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput #input placeholder="Name" [(ngModel)]='name' />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>User role</mat-label>
+            <mat-select [(ngModel)]="role">
+                <mat-option value="Admin"> Admin </mat-option>
+                <mat-option value="User"> User </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="add()">Add User</button>
+    </div>
 </footer>
 
-<mat-selection-list #users>
-  <mat-list-option
-    *ngFor="let user of usersList; let i = index"
-    [ngClass]="{ 'bg-gray': i % 2 }"
-  >
-    <div class="users-items">
-      <span class="item">{{ user.username }} </span>
-      <span class="item">{{ user.name }} </span>
-      <span *ngIf="user.role === 'Admin'" class="item">{{ user.role }} > </span>
-    </div>
-  </mat-list-option>
+<mat-selection-list #users (selectionChange)="selectItem(users.selectedOptions.selected)">
+    <mat-list-option [value]="user" *ngFor="let user of usersList; let i = index" [ngClass]="{ 'bg-gray': i % 2 }">
+        <div class="users-items">
+            <span class="item">{{ user.username }} </span>
+            <span class="item">{{ user.name }} </span>
+            <span *ngIf="user.role === 'Admin'" class="item">{{ user.role }} > </span>
+        </div>
+    </mat-list-option>
 </mat-selection-list>
 
-<p>Options selected: {{ users.selectedOptions.selected.length }}</p>
-
-<footer class="add-user-bar">
-  <mat-form-field appearance="outline">
-    <mat-label>Username</mat-label>
-    <input
-      matInput
-      #input
-      placeholder="Username"
-      [(ngModel)] = 'username'
-    />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Name</mat-label>
-    <input
-      matInput
-      #input
-      placeholder="Name"
-      [(ngModel)] = 'name'
-    />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>User role</mat-label>
-    <mat-select [(ngModel)]="role">
-      <mat-option value="Admin"> Admin </mat-option>
-      <mat-option value="User"> User </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="add()">Add User</button>
-</footer>
+<div class="b-line">
+    <p>Options selected: {{ users.selectedOptions.selected.length }}</p>
+    <div>
+        <button mat-raised-button color="warn" (click)="deleteForService()">Delete Users</button>
+    </div>
+</div>

@@ -11,10 +11,12 @@
 }
 .bg-gray{ background: #eee;}
 
-.filter-bar{
+.filter-bar .line{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-top: 1px solid #777;
     border-bottom: 1px solid #777;
     padding: 14px 0 0;
 }
+.filter-bar .line > *{margin: 0 3px;}
