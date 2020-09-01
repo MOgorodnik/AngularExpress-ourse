@@ -15,6 +15,7 @@ export class UsersListComponent implements OnInit {
   username: string;
   role: string;
   selectedList: User[];
+  query: string;
 
 
   constructor(public usersService: UsersService) { }
